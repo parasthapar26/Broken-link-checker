@@ -1,0 +1,18 @@
+name: Check Links
+
+on: 
+  workflow_dispatch:
+
+jobs:
+  linkChecker:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Install lychee
+      run: cargo install lychee
+
+    - name: Run lychee on markdown files
+      run: lychee ./README.md --verbose
